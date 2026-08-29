@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: streaming-data-config
+data:
+  KAFKA_PORT: "9091"
+  KAFKA_CONSUMER_GROUP: "streaming-data-platform"
+  BATCH_SIZE: "100"
