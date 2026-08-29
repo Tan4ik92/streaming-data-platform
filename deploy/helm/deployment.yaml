@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streaming-data-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: streaming-data-service
+  template:
+    metadata:
+      labels:
+        app: streaming-data-service
+    spec:
+      containers:
+        - name: service
+          image: your-registry/streaming-data-service:latest
+          envFrom:
+            - configMapRef:
+                name: streaming-data-config
+            - secretRef:
+                name: streaming-data-secrets
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
